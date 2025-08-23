@@ -2,6 +2,7 @@
   "name": "React Dev",
   "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "node",
+  "runArgs": ["--network=host"],
   "extensions": [
     "GitHub.github-vscode-theme",
     "esbenp.prettier-vscode",
