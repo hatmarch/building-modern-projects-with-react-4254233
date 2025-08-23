@@ -11,9 +11,25 @@ function App() {
     { text: 'Paint the house', isCompleted: false }
   ]);
 
+  function markTodoAsCompleted(text) {
+    setIncompleteTodos(incompleteTodos.filter(todo => todo.text !== text));
+    setCompletedTodos([...completedTodos, { text, isCompleted: true }]);
+  }
+
+  function deleteTodo(text) {
+    setCompletedTodos(completedTodos.filter(todo => todo.text !== text));
+  }
+
+  function createTodo(text) {
+    setIncompleteTodos([...incompleteTodos, { text, isCompleted: false }]);
+  }
+
   return (
     <>
-      <TodoList completedTodos={completedTodos} incompleteTodos={incompleteTodos} />
+      <TodoList completedTodos={completedTodos} incompleteTodos={incompleteTodos}
+      onCompletedClicked={markTodoAsCompleted}
+      onDeleteClicked={deleteTodo} 
+      onCreateClicked={createTodo} />
     </>
   )
 }
